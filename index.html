@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700;800&display=swap" rel="stylesheet">
+  <title>Feliz Aniversario</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <div id="confetti-container"></div>
+    <h1>Feliz aniversariooooo</h1>
+    <p>Olha so quem esta fazendo aniversario hojeeeeeee,<span>20 anos</span> é coisa pra dedeu em
+    duas decadas de vida,como o tempo passa,nas palavras de Carl Segan:
+  "é um prazer dividir esse tempo e lugar com voce"</p>
+    <h2>continue a ser voce e nunca se esqueça de sonhar </h2>
+    <button id="confetti-button">clique aqui para comemorar</button>
+  </main>
+  <script>
+    document.getElementById('confetti-button').addEventListener('click', function() {
+  createConfetti(50);});
+
+function createConfetti(numConfetti) {
+  var confettiContainer = document.getElementById('confetti-container');
+  confettiContainer.style.height = document.documentElement.scrollHeight + 'px'; // Define a altura do contêiner como a altura total da página
+
+  for (var i = 0; i < numConfetti; i++) {
+    var confetti = document.createElement('div');
+    confetti.className = 'confetti';
+    confetti.style.left = Math.random() * 100 + '%';
+    confetti.style.backgroundColor = getRandomColor();
+    confetti.style.animationDelay = Math.random() * 3 + 's'; // Atraso aleatório para criar um efeito de queda simultânea
+    confettiContainer.appendChild(confetti);
+  }
+
+  setTimeout(function() {
+    confettiContainer.innerHTML = '';
+    confettiContainer.style.height = '100vh'; // Redefine a altura do contêiner para 100vh após a remoção dos confetes
+  }, 3000);
+}
+
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+  </script>
+</body>
+</html>
